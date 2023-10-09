@@ -11,7 +11,7 @@ import os
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 llm = HuggingFaceHub(
-    repo_id='google/pegasus-large', model_kwargs={"temperature": 0.5, "max_length": 16384}
+    repo_id='allenai/led-base-16384', model_kwargs={"temperature": 0.5, "max_length": 16384}
 )
 
 def summarize_pdfs_from_folder(pdfs_folder):

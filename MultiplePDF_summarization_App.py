@@ -7,7 +7,7 @@ import tempfile
 
 import os
 
-# Set up OpenAI API
+# Set up HuggingFace API
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 llm = HuggingFaceHub(

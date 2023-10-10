@@ -33,6 +33,7 @@ def summarize_pdfs_from_folder(pdfs_folder):
     return summaries
 
 # Streamlit App
+st.set_page_config(layout="wide")
 st.title("Multiple PDF Summarizer")
 
 # Allow user to upload PDF files

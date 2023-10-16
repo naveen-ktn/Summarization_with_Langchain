@@ -1,17 +1,25 @@
 from langchain.chains.summarize import load_summarize_chain
 from langchain.document_loaders import PyPDFLoader
+from langchain.prompts import PromptTemplate
 import streamlit as st
 from langchain import HuggingFaceHub
 import os
 import tempfile
-
 import os
 
-# Set up HuggingFace API
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
+os.environ['CURL_CA_BUNDLE'] = ''
+
+# Set up HuggingFcae API
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
+
+# Define prompt
+prompt_template = """Write a concise summary of the following:
+"{text}"
+CONCISE SUMMARY:"""
+PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
 
 llm = HuggingFaceHub(
-    repo_id='meta-llama/Llama-2-7b', model_kwargs={"temperature": 0.5, "max_length": 16384}
+    repo_id='google/pegasus-xsum', model_kwargs={"temperature": 0.5, "max_length": 16384}
 )
 
 def summarize_pdfs_from_folder(pdfs_folder):
@@ -23,7 +31,7 @@ def summarize_pdfs_from_folder(pdfs_folder):
         
         loader = PyPDFLoader(temp_path)
         docs = loader.load_and_split()
-        chain = load_summarize_chain(llm, chain_type="map_reduce")
+        chain = load_summarize_chain(llm, map_prompt=PROMPT, combine_prompt=PROMPT, chain_type="map_reduce")
         summary = chain.run(docs)
         summaries.append(summary)
 
@@ -33,7 +41,6 @@ def summarize_pdfs_from_folder(pdfs_folder):
     return summaries
 
 # Streamlit App
-st.set_page_config(layout="wide")
 st.title("Multiple PDF Summarizer")
 
 # Allow user to upload PDF files

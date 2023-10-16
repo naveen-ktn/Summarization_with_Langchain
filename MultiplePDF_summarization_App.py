@@ -8,6 +8,7 @@ import tempfile
 
 os.environ['CURL_CA_BUNDLE'] = ''
 
+
 # Set up HuggingFcae API
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
@@ -40,6 +41,8 @@ def summarize_pdfs_from_folder(pdfs_folder):
     return summaries
 
 # Streamlit App
+st.set_page_config(layout="wide")
+
 st.title("Multiple PDF Summarizer")
 
 # Allow user to upload PDF files

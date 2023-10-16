@@ -11,7 +11,7 @@ import os
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 llm = HuggingFaceHub(
-    repo_id='meta-llama/Llama-2-70b-chat-hf', model_kwargs={"temperature": 0.5, "max_length": 16384}
+    repo_id='meta-llama/Llama-2-7b', model_kwargs={"temperature": 0.5, "max_length": 16384}
 )
 
 def summarize_pdfs_from_folder(pdfs_folder):

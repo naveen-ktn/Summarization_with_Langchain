@@ -5,7 +5,6 @@ import streamlit as st
 from langchain import HuggingFaceHub
 import os
 import tempfile
-import os
 
 os.environ['CURL_CA_BUNDLE'] = ''
 

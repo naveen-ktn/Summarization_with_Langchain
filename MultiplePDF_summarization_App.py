@@ -8,7 +8,7 @@ import tempfile
 import os
 
 # Set up HuggingFace API
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 llm = HuggingFaceHub(
     repo_id='meta-llama/Llama-2-7b', model_kwargs={"temperature": 0.5, "max_length": 16384}

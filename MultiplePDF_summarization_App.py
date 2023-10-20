@@ -19,7 +19,7 @@ CONCISE SUMMARY:"""
 PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
 
 llm = HuggingFaceHub(
-    repo_id='facebook/bart-large-cnn', model_kwargs={"temperature": 0.5, "max_length": 16384}
+    repo_id='MBZUAI/LaMini-Flan-T5-248M', model_kwargs={"temperature": 0.5, "max_length": 16384}
 )
 
 def summarize_pdfs_from_folder(pdfs_folder):
